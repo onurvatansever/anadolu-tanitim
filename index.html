@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Anadolu Üniversitesi öğrencileri için interaktif kampüs mekanları, ulaşım hatları, aylık bütçe hesaplayıcı ve hayat kurtaran tüyolar rehberi."
+  />
+  <title>Anadolu Rehber | Öğrenci Gözünden Kampüs</title>
+
+  <!-- Harici dosya gerektirmeyen SVG Emoji Favicon -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>"
+  />
+
+  <!-- WhatsApp, Telegram ve Sosyal Medya Paylaşım Kartı (Open Graph) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Anadolu Rehber | Öğrenci Gözünden Kampüs" />
+  <meta
+    property="og:description"
+    content="Anadolu Üniversitesi kampüs mekanları, gerçek öğrenci tüyoları, ulaşım hatları ve aylık bütçe hesaplayıcı."
+  />
+  <meta name="theme-color" content="#0284c7" />
+
+  <!-- Modern Tipografi (Inter & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Özel Stil Dosyası -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 1. HEADER / NAVBAR -->
+  <header class="site-header" id="top">
+    <div class="container navbar">
+      <a href="#top" class="brand-logo" aria-label="Anadolu Rehber Ana Sayfa">
+        <span class="logo-icon" aria-hidden="true">🎓</span>
+        <span class="logo-text">Anadolu <span>Rehber</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Ana Menü">
+        <ul class="nav-links">
+          <li><a href="#kesfet" class="nav-link">Keşfet</a></li>
+          <li><a href="#ulasim" class="nav-link">Ulaşım</a></li>
+          <li><a href="#masraf-hesapla" class="nav-link">Masraf Hesapla</a></li>
+          <li><a href="#sss" class="nav-link">S.S.S.</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Hızlı Arama Barı -->
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Mekan, kampüs veya tüyo ara... (Örn: çorba, priz)"
+            aria-label="Kampüs mekanlarında ve tüyolarda ara"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Koyu / Açık Tema Değiştirici -->
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Koyu veya açık temayı değiştir"
+          title="Temayı Değiştir"
+        >
+          <span class="theme-icon" id="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+
+        <!-- Mobil Menü Butonu -->
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="mobile-menu-btn"
+          aria-label="Menüyü aç/kapat"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. HERO BÖLÜMÜ -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badges" aria-label="Öne Çıkan Özellikler">
+          <span class="stat-badge">📍 2 Kampüs</span>
+          <span class="stat-badge">💡 Gerçek Öğrenci Tüyoları</span>
+          <span class="stat-badge">🛡️ 0 Reklam</span>
+        </div>
+
+        <h1 class="hero-title">Anadolu Üniversitesi'ni Öğrenci Gibi Yaşa</h1>
+        <p class="hero-subtitle">
+          Resmi bültenleri unut; kampüs mekanları, tüyolar, ulaşım ve bütçe rehberi elinin altında.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#kesfet" class="btn btn-primary">Mekanları Keşfet</a>
+          <a href="#masraf-hesapla" class="btn btn-secondary">Bütçeni Hesapla</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. İNTERAKTİF MEKAN KEŞİF BÖLÜMÜ -->
+    <section id="kesfet" class="section explore-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">KAMPÜS HARİTASI &amp; REHBER</span>
+            <h2 class="section-title">İnteraktif Mekan Keşfi</h2>
+            <p class="section-desc">
+              Ders çalışacak prizli masadan en hızlı yemekhane saatine kadar öğrenci gözünden kampüs noktaları.
+            </p>
+          </div>
+          <div class="results-counter">
+            Toplam <strong id="places-count">0</strong> mekan listeleniyor
+          </div>
+        </div>
+
+        <!-- Filtre Kontrolleri -->
+        <div class="filter-bar">
+          <!-- Kategori Filtre Butonları -->
+          <div class="filter-group" role="group" aria-label="Mekan Kategorisi Filtresi">
+            <span class="filter-label">Kategori:</span>
+            <div class="category-filters" id="category-filters">
+              <button type="button" class="filter-btn active" data-category="all">
+                Tümü
+              </button>
+              <button type="button" class="filter-btn" data-category="calisma">
+                📚 Çalışma Alanları
+              </button>
+              <button type="button" class="filter-btn" data-category="yemek">
+                🍲 Yemek
+              </button>
+              <button type="button" class="filter-btn" data-category="sosyal">
+                ☕ Sosyal
+              </button>
+              <button type="button" class="filter-btn" data-category="ulasim">
+                🚊 Ulaşım/Giriş
+              </button>
+            </div>
+          </div>
+
+          <!-- Kampüs Filtresi -->
+          <div class="filter-group" role="group" aria-label="Kampüs Filtresi">
+            <span class="filter-label">Kampüs:</span>
+            <div class="campus-filters" id="campus-filters">
+              <button type="button" class="campus-btn active" data-campus="all">
+                Tümü
+              </button>
+              <button type="button" class="campus-btn" data-campus="Yunus Emre">
+                Yunus Emre
+              </button>
+              <button type="button" class="campus-btn" data-campus="İki Eylül">
+                İki Eylül
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dinamik Mekan Kartları Grid Alanı -->
+        <div id="places-grid" class="places-grid" aria-live="polite">
+          <!-- app.js tarafından window.CAMPUS_DATA.places kullanılarak doldurulacak -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ULAŞIM & HATLAR REHBERİ -->
+    <section id="ulasim" class="section transport-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">ESTRAM, OTOBÜS VE YÜRÜYÜŞ ROTALARI</span>
+            <h2 class="section-title">Ulaşım &amp; Hatlar Rehberi</h2>
+            <p class="section-desc">
+              Sabah yoğunluğuna takılmadan Yunus Emre ve İki Eylül kampüslerine en hızlı ulaşım alternatifleri.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dinamik Rota Kartları Alanı -->
+        <div id="transport-list" class="transport-list">
+          <!-- app.js tarafından window.CAMPUS_DATA.transport kullanılarak doldurulacak -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MİNİ ARAÇ: AYLIK KAMPÜS GİDERİ HESAPLAYICI -->
+    <section id="masraf-hesapla" class="section budget-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">ÖĞRENCİ EKONOMİSİ</span>
+            <h2 class="section-title">Aylık Kampüs Gideri Hesaplayıcı</h2>
+            <p class="section-desc">
+              Yemekhane ve ulaşım alışkanlıklarına göre aylık temel kampüs bütçeni saniyeler içinde hesapla.
+            </p>
+          </div>
+        </div>
+
+        <div class="budget-calculator-card">
+          <!-- Sol: Slider Girdileri -->
+          <div class="budget-inputs">
+            <!-- Girdi 1: Günlük Öğün -->
+            <div class="input-control">
+              <div class="input-header">
+                <label for="meals-per-day">Günde kaç öğün yemekhanede yiyeceksin?</label>
+                <span class="input-badge"><strong id="meals-val">1</strong> Öğün / Gün</span>
+              </div>
+              <input
+                type="range"
+                id="meals-per-day"
+                min="0"
+                max="2"
+                step="1"
+                value="1"
+                class="range-slider"
+              />
+              <div class="range-ticks">
+                <span>0 (Yemiyorum)</span>
+                <span>1 Öğün</span>
+                <span>2 Öğün</span>
+              </div>
+            </div>
+
+            <!-- Girdi 2: Günlük Ulaşım -->
+            <div class="input-control">
+              <div class="input-header">
+                <label for="rides-per-day">Günde kaç kez tramvay/otobüs kullanacaksın?</label>
+                <span class="input-badge"><strong id="rides-val">2</strong> Biniş / Gün</span>
+              </div>
+              <input
+                type="range"
+                id="rides-per-day"
+                min="0"
+                max="4"
+                step="1"
+                value="2"
+                class="range-slider"
+              />
+              <div class="range-ticks">
+                <span>0 (Yürüyorum)</span>
+                <span>1</span>
+                <span>2 (Gidiş-Dönüş)</span>
+                <span>3</span>
+                <span>4 Biniş</span>
+              </div>
+            </div>
+
+            <!-- Girdi 3: Aylık Kampüs Günü -->
+            <div class="input-control">
+              <div class="input-header">
+                <label for="days-per-month">Ayda kaç gün kampüstesin?</label>
+                <span class="input-badge"><strong id="days-val">20</strong> Gün / Ay</span>
+              </div>
+              <input
+                type="range"
+                id="days-per-month"
+                min="10"
+                max="25"
+                step="1"
+                value="20"
+                class="range-slider"
+              />
+              <div class="range-ticks">
+                <span>10 Gün</span>
+                <span>15 Gün</span>
+                <span>20 Gün (Standart)</span>
+                <span>25 Gün</span>
+              </div>
+            </div>
+
+            <p class="tariff-note">
+              * Hesaplamalar güncel öğrenci tarifeleri (<strong id="unit-meal-price">20</strong> TL yemekhane,
+              <strong id="unit-tram-price">10</strong> TL indirimli Eskart) baz alınarak yapılmaktadır.
+            </p>
+          </div>
+
+          <!-- Sağ: Sonuç Özeti -->
+          <div class="budget-results" aria-live="polite">
+            <h3 class="results-title">Tahmini Aylık Gider Özeti</h3>
+
+            <div class="result-breakdown">
+              <div class="result-row">
+                <span class="result-label">🍲 Aylık Yemekhane Masrafı</span>
+                <span class="result-value"><strong id="meal-cost-output">400</strong> TL</span>
+              </div>
+
+              <div class="result-row">
+                <span class="result-label">🚊 Aylık Ulaşım Masrafı</span>
+                <span class="result-value"><strong id="transport-cost-output">400</strong> TL</span>
+              </div>
+            </div>
+
+            <div class="result-total-box">
+              <span class="total-label">Toplam Zorunlu Kampüs Bütçesi</span>
+              <div class="total-amount"><span id="total-cost-output">800</span> <small>TL / Ay</small></div>
+              <span class="daily-average" id="daily-average-output">Günlük ortalama: 40 TL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SIKÇA SORULAN SORULAR (AKORDİYON) -->
+    <section id="sss" class="section faq-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">HAYAT KURTARAN BİLGİLER</span>
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+            <p class="section-desc">
+              Okula yeni başlayanların ve üst sınıfların en çok aradığı kritik kampüs işlemleri.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dinamik Akordiyon Alanı -->
+        <div id="faq-accordion" class="faq-accordion">
+          <!-- app.js tarafından window.CAMPUS_DATA.faq kullanılarak doldurulacak -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7. FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon" aria-hidden="true">🎓</span>
+        <strong>Anadolu Rehber</strong>
+        <p class="footer-note">
+          Bu web sitesi Anadolu Üniversitesi öğrencileri için bağımsız olarak hazırlanmış statik ve açık kaynaklı bir
+          öğrenci rehberidir. Resmi kurum beyanı niteliği taşımaz; öğrenci dayanışması amacıyla geliştirilmiştir.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#kesfet">Mekanlar</a>
+        <a href="#ulasim">Ulaşım</a>
+        <a href="#masraf-hesapla">Bütçe Hesaplayıcı</a>
+        <a href="#sss">S.S.S.</a>
+        <a href="#top">Yukarı Çık ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ETİKETLERİ (Sırasıyla data.js ve app.js) -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
